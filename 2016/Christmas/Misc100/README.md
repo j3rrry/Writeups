@@ -1,5 +1,5 @@
 # Stupid RSA
-Misc / 100 point
+## Misc / 100 point
 
 RSA는 p랑 q만 크면 짱짱맨아닌가요?.....
 
