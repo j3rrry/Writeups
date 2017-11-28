@@ -21,7 +21,7 @@ djinn: I have the information. But how do I know I can trust you?
 a: b
 djinn: Sorry. That's not good enough
 ```
-`username`을 받고 `trust` 를 받는다는 것을 알수가 있었고  
+`username`을 입력 받고 `trust` 를 받는다는 것을 알수가 있었고  
 바로 바이너리 분석에 들어갔습니다.  
 ```
 [0x08048470]> afl~printFlag
