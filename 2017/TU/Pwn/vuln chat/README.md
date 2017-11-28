@@ -5,7 +5,7 @@ One of our informants goes by the handle djinn. He found some information while 
   
 nc vulnchat.tuctf.com 4141  
   
-[vuln-chat](https://github.com/j3rrry/CTF/raw/master/2017/TU/Pwn/vuln%20chat%20/vuln-chat) - md5: 5d081990e899864c9dc85b1cf255af6e  
+[vuln-chat](https://github.com/j3rrry/CTF/raw/master/2017/TU/Pwn/vuln%20chat/vuln-chat) - md5: 5d081990e899864c9dc85b1cf255af6e  
 
 -------
 
