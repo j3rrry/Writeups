@@ -69,9 +69,9 @@ int __cdecl main(int argc, const char **argv, const char **envp)
 `v6`, `v7`, `sfp`, `ret`의 1바이트에 영향을 줄 수가 있습니다.  
 중요한 것은 `v6` 가 "%30s" 문자열 형태로 길이제한에 대한 정보를 갖고 있으며 변조가 가능하다는 것입니다.  
 `v5`부터 `v6`까지의 거리는 0x19-0x5=20  
-`payload = "1" * 20 + "%99s"`  
+`payload = "1" * 20 + "%s"`  
   
-두 번째 scanf() 는 이제 길이 제한이 풀린 것이나 다름없습니다.  
+두 번째 scanf() 는 이제 길이 제한이 풀렸습니다.  
 `__isoc99_scanf(&v6, &v4);`  
 `v4` 부터 RET 까지의 거리 : 0x2D+4  
 0x2D+4+4=53  
