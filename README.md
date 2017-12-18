@@ -1,4 +1,5 @@
 # CTF
+2017/0x00/reversing/[challenge-004](./2017/0x00/reversing/challenge-004) : `#anti-debugging`, `#ptrace`, `#obfuscate`, `#got-overwrite`  
 2017/TU/Pwn/[vuln chat](./2017/TU/Pwn/vuln%20chat)  
 2017/TU/Pwn/[vuln chat 2.0](./2017/TU/Pwn/vuln%20chat%202.0)  
 2016/Christmas/[Misc100](./2016/Christmas/Misc100)  
