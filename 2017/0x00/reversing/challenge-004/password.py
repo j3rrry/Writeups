@@ -3,8 +3,6 @@ extrac = map(lambda x: int(x,16), extrac)
 flag = '0x00CTF{'
 flag = map(ord, flag)
 
-password = ''
-for i, j in zip(extrac, flag):
-	password += chr(i ^ j)
+password = ''.join([chr(i^j) for i,j in zip(extrac, flag)])
 
 print password
