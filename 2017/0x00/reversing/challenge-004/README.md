@@ -22,6 +22,7 @@ Keep Trying!
 `"Keep Trying!"` 을 출력한다.  
   
 하지만 디버깅에서 보이는 문자열이라고는  
+  
 ![strings](./strings.png)  
 `"Hello Word!"` 밖에 안보인다.  
   
@@ -164,7 +165,7 @@ A ^ B = B ^ A = C 이면 A ^ C = C ^ A = B 가 성립한다.
   
 따라서 password.py 를 만들어서  
 off_602088 과 "0x00CTF{" 를 XOR 해서 password 를 알아낸다.  
-```
+```python
 extrac = '01 16 79 44 04 64 12 5A  01'.split()
 extrac = map(lambda x: int(x,16), extrac)
 flag = '0x00CTF{'
