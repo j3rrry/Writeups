@@ -2,9 +2,9 @@
 # challenge-004
 50 pt
 ## Descripton
-Platform: Linux 64 bits
-Focus: Reversing/ELF
-
+Platform: Linux 64 bits  
+Focus: Reversing/ELF  
+  
 binary: [hello](./hello)
 
 -----------------------
