@@ -101,8 +101,8 @@ LABEL_15:
 }
 ```
 
-위 소스를 잘라서 보자면  
-처음 분기점 앞에서 길이를 확인한다.
+위 소스를 잘라서  
+첫번째 분기점 부분을 봅니다.  
 ```C++
   LODWORD(v6) = std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::length(&v20); // length check
   if ( v6 != sub_401402((__int64)&v19) )
@@ -111,6 +111,7 @@ LABEL_15:
     v7 = 1;
   }
 ```
+길이 확인을 하는 부분입니다.  
 어셈으로는 아래와 같으며 
 ```asm
 .text:0000000000400F67                 call    sub_401402
@@ -133,7 +134,21 @@ LABEL_15:
       if ( i >= v8 )
         break;
       LODWORD(v9) = std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator[](&v20, i);
-      v10 = *v9 - 'a';                          // ascii_lowercase                                                                                                                                                       LODWORD(v11) = algorism_4012D8(&v19, i);                                                                                                                                                                           if ( v10 != *v11 )                                                                                                                                                                                                 {                                                                                                                                                                                                                    std::operator<<<std::char_traits<char>>(&std::cout, "FAIL\n");                                                                                                                                                     v7 = 2;                                                                                                                                                                                                            goto LABEL_15;                                                                                                                                                                                                   }                                                                                                                                                                                                                }
+      v10 = *v9 - 'a';                          // ascii_lowercase
+      LODWORD(v11) = algorism_4012D8(&v19, i);
+      if ( v10 != *v11 )
+      {
+        std::operator<<<std::char_traits<char>>(&std::cout, "FAIL\n");
+        v7 = 2;
+        goto LABEL_15;
+      }
+    }
+    std::operator<<<std::char_traits<char>>(&std::cout, "Good key!\n");
+    LODWORD(v12) = std::operator<<<std::char_traits<char>>(&std::cout, "The flag is: 0x00CTF{");
+    LODWORD(v13) = std::operator<<<char,std::char_traits<char>,std::allocator<char>>(v12, &v20);
+    std::operator<<<std::char_traits<char>>(v13, "}\n");
+    v7 = 0;
+  }
 ```
 `v10 = *v9 - 'a'` 를 보아 소문자인 것으로 어림짐작했었고  
 14자리의 키값의 검증이 모두 끝나면 `break` 를 통해 for 문을 나오게되고  
@@ -141,7 +156,7 @@ LABEL_15:
   
 1. 각 문자는 소문자 a-z. 26자로 이루어져 있고
 2. 문자 하나씩 검증을 하기 때문에
-3. 브루트 포스로 14``**``26 번만 하면 키값을 알아낼 수 있음
+3. 브루트 포스로 14\*\*26 번만 하면 키값을 알아낼 수 있음
 
 따라서 스크립트를 짰습니다.
 ```python
@@ -149,19 +164,19 @@ import gdb
 import string
 
 charset = string.ascii_lowercase
-flag = ['a'] * 0xE
+key = ['a'] * 0xE
 
 def exp_write():
     f = open('./exp', 'w')
-    f.write(''.join(flag))
+    f.write(''.join(key))
     f.close()
 
 bp = gdb.Breakpoint('*0x0000000000400FF5')
 bp.silent = True
 
-for i in range(len(flag)):
+for i in range(len(key)):
     for c in charset:
-        flag[i] = c
+        key[i] = c
         exp_write()
         bp.ignore_count = i
         gdb.execute('r < ./exp')
