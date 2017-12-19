@@ -1,5 +1,6 @@
 # CTF
 2017/0x00/reversing/[challenge-000](./2017/0x00/reversing/challenge-000) : `#C++`  
+2017/0x00/reversing/[challenge-001](./2017/0x00/reversing/challenge-001) : `#anti-debugging`, `#obfuscate`, `#jmp`, `#unicode`  
 2017/0x00/reversing/[challenge-004](./2017/0x00/reversing/challenge-004) : `#anti-debugging`, `#ptrace`, `#obfuscate`, `#got-overwrite`  
 2017/TU/Pwn/[vuln chat](./2017/TU/Pwn/vuln%20chat)  
 2017/TU/Pwn/[vuln chat 2.0](./2017/TU/Pwn/vuln%20chat%202.0)  
