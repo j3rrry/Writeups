@@ -187,3 +187,4 @@ gdb.execute('c')
 gdb.execute('q')
 # 0x00CTF{abbcdfinvidloz}
 ```
+스크립트는 약 53초 걸렸습니다.
