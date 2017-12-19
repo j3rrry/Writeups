@@ -92,6 +92,22 @@ __int64 __fastcall sub_400AC4(const char *a1)
   return 0LL;
 }
 ```
+```asm
+LOAD:0000000000400B77 ptrace_400B77   proc near               ; CODE XREF: sub_400AC4+24p
+LOAD:0000000000400B77                                         ; DATA XREF: ptrace_400B77+5o
+LOAD:0000000000400B77                 mov     ebx, 0C3050Fh
+LOAD:0000000000400B7C                 lea     r12, ptrace_400B77 ; 0x40B77+1:  syscall; ret
+LOAD:0000000000400B84                 inc     r12
+LOAD:0000000000400B87                 push    r12
+LOAD:0000000000400B89                 mov     eax, 65h        ; __NR_ptrace
+LOAD:0000000000400B8E                 retn
+LOAD:0000000000400B8E ptrace_400B77   endp ; sp-analysis failed
+```
+```radare2
+[0x004006f0]> pd 2 @ 0x400B77+1
+|           0x00400b78      0f05           syscall
+|           0x00400b7a      c3             ret
+```
 sub_400AC4 는 현재 프로세스가 디버깅 모드인지 확인을 한다.  
 디버깅 중이면 "Hello World!" 를 출력  
 디버깅 중이 아니면 sub_400A03 를 호출한다.  
