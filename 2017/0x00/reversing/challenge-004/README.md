@@ -123,7 +123,7 @@ __int64 sub_400A03()
   putchar_4007DD(off_6020B8, dword_6020B0);	// "Password: "
   memset(&s, 0, 0x80uLL);
   if ( read(0, &s, 0x80uLL) == 9 )	// read length is 9
-    flag_40084E(&s, &s);
+    flag_40084E(&s);
   putchar_4007DD(off_6020C8, dword_6020C0);	// "Keep Trying!"
   return 0LL;
 }
