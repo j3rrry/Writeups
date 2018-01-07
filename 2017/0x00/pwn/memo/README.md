@@ -1,5 +1,6 @@
+# Memo Manager
 point : 200
-# Description
+## Description
 ```
 Sometimes the wisest way to win is by giving up ;)
 
@@ -11,8 +12,8 @@ $ md5sum *
 e4096418e39ed90698b9a850d2d2c8a7  memo
 ```
 
-# 취약점
-## 취약점 1: strdup() 의 size check
+## 취약점
+### 취약점 1: strdup() 의 size check
 ```
 __int64 __fastcall alloc(char *a1)
 ...
@@ -62,7 +63,7 @@ canary -> 0x10: 41 de ad be
   
 이 `strdup()` 로 인해서 현재 **스택의 주소(ASLR 우회)**와 **canary(SSP 해제)** 를 leak 할 수 있다.  
 
-## 취약점 2: pointer 조작을 통한 GOT leak (BOF)
+### 취약점 2: pointer 조작을 통한 GOT leak (BOF)
 ```
 --==[[ Spiritual Memo ]]==--
 [1] Create a memo            # alloc()
@@ -99,7 +100,7 @@ buf + 0x18 = var_18
 우리는 `puts@GOT` 를 leak 해서 **libc 의 base 주소**를 계산하고  
 gadget 을 모을 것이다.  
 
-## 취약점 3: house of spirit
+### 취약점 3: house of spirit
 취약점 1,2 만으로 RET 를 덮을 수 없다.  
 `buf` 가 `rbp-0x30` 인데 read(,, 0x30) 이기 때문이다. ( 0x10 bytes 모자라다 )  
 ```
@@ -126,7 +127,7 @@ malloc() -> 0x10: 00000000 00000000 00000000 00000000
             0x30: <-     sfp     -> <-     ret     ->
 ```
 
-# Exploit
+## Exploit
 1. 스택 주소와 canary leak  
 	
 	```
