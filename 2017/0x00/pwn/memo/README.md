@@ -61,7 +61,7 @@ canary -> 0x10: 41 de ad be
 실제론 `0x11` 만큼만 입력했지만  
 `strlen()` 은 `0x14` 만큼을 측정하게 되어 `malloc()` 한다.  
   
-이 `strdup()` 로 인해서 현재 **스택의 주소(ASLR 우회)**와 **canary(SSP 해제)** 를 leak 할 수 있다.  
+이 `strdup()` 로 인해서 현재 **스택의 주소(ASLR 우회)** 와 **canary(SSP 해제)** 를 leak 할 수 있다.  
 
 ### 취약점 2: pointer 조작을 통한 GOT leak (BOF)
 ```
@@ -83,8 +83,7 @@ canary -> 0x10: 41 de ad be
 ...
 ```
 `"Giving up already? ~"` 하면서 `read()` 한다.  
-이때 `buf` 에 0x30 을 받을 수 있게 되는데  
-( alloc() 에서 똑같은 read(0, ,0x30) 이 있지만 이후에 (&buf + 0x18) 에 주소를 초기화시키기 때문에 이용할 수가 없다. )  
+이때 `buf` 에 `0x30` 만큼 받을 수 있게 되는데  
 `(&buf + 0x18)` 는 `dump()` 할 때의 참조하는 주소가 저장되는 곳이다.  
 ```
 mov     rax, [rbp+var_18]
@@ -97,6 +96,7 @@ buf + 0x18 = var_18
 ```
 즉 `(&buf + 0x18)` 에 leak 하고 싶은 주소값을 넣기만하면  
 그 주소에 저장되어 있는 데이터를 볼 수 있게된다.  
+( alloc() 에서 똑같은 read(0, ,0x30) 이 있지만 이후에 (&buf + 0x18) 에 주소를 초기화시키기 때문에 이용할 수가 없다. )  
 우리는 `puts@GOT` 를 leak 해서 **libc 의 base 주소**를 계산하고  
 gadget 을 모을 것이다.  
 
