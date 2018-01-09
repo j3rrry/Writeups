@@ -16,7 +16,7 @@
     18	    printf("You read my mind!!!. We are twin souls\n--> 0x00CTF{Y0uR_th3_0n3_%x} <--\n\n", v4);
 ...
 ```
-`main()` 에는 `sub_40069D()` 의 값에 따라 플래그가 나타난다.  
+`sub_40069D()` 의 값에 따라 플래그가 나타난다.  
   
 `sub_40069D()`:
 ```
