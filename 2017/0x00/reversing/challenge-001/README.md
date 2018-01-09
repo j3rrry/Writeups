@@ -20,7 +20,7 @@ Points: 50
 그러나 문자열 `"Try again!"` 이 검색안됬는데  
 `MessageBox` 가 쓰인다고 보고  
 그 언저리를 확인해보았다.  
-```asm
+```
 .idata:00470158 ; int __stdcall MessageBoxW(HWND hWnd, LPCWSTR lpText, LPCWSTR lpCaption, UINT uType)
 .idata:00470158                 extrn MessageBoxW:dword ; CODE XREF: .text:0040101Ep
 .idata:00470158                                         ; DATA XREF: .text:0040101Er
@@ -36,7 +36,7 @@ Points: 50
 `"Congratulations!"` 출력할 때 사용된다.  
   
 이제 해당 부분부터 거슬러 올라가보려 한다.  
-```asm
+```
 .text:00401010                 push    10h
 .text:00401012                 push    offset aError   ; "Error!"
 .text:00401017                 push    offset aInvalidSerialN ; "Invalid serial number. Try again! :-("
@@ -49,7 +49,7 @@ Points: 50
 이는 디버거가 해석을 못하도록 안티디버깅 기법을 적용시켜서 code 가 깨져있을 것으로 예상했다.  
   
 동적으로 어느부분에서 위 함수를 call 했는지 확인해보았다.
-```asm
+```
 .text:001713E7 byte_1713E7 db 0FFh                     ; CODE XREF: .text:001713DDj
 .text:001713E8 dd 71E850FFh, 83000001h, 0B60F04C4h, 74C985C8h, 0F48D8D0Dh, 0E8FFFFFDh
 .text:001713E8 dd 0FFFFFD5Ch, 5E805EBh
@@ -59,7 +59,7 @@ Points: 50
 .text:00171410 jmp     short loc_171436
 ```
 위 코드를 잘 변환시켜주면
-```asm
+```
 .text:001713D7 xor     eax, eax
 .text:001713D9 jnz     short near ptr unk_1713E2	   ; naver taken
 .text:001713DB jz      short loc_1713E3
@@ -97,7 +97,7 @@ Points: 50
 따라서 `.text:001713DB` 의 `jz` 가 무조건 수행된다.  
   
 다음으로 check_171560 를 분석해보자.
-```asm
+```
 .text:0017157A jnz     short near ptr unk_171583       ; naver taken
 .text:0017157C jz      short loc_171584
 .text:0017157C ; ---------------------------------------------------------------------------
@@ -122,13 +122,13 @@ Points: 50
 이번에도 역시 같은 방식의 안티디버깅이 있었고  
 시리얼의 길이가 0xD 보다 크거나 같다는 것을 알게 되었다.  
   
-```asm
+```
 .text:001715C7 mov     ecx, [ebp+lpMem]
 .text:001715CA call    serial_171030		; strcpy_serial( lpMem );
 ```
 위 함수가 시리얼을 생성했고  
 
-```asm
+```
 .text:001715CF mov     edx, [ebp+lpMem]		; 시리얼이 저장되어 있음
 .text:001715D2 mov     ecx, [ebp+arg_0]		; 우리가 입력한 시리얼
 .text:001715D5 call    chkSerial_171450
