@@ -10,7 +10,7 @@ Platform: 64 bit Linux (developed on Ubuntu)
 
 ------------------------
 다음은 main 함수입니다.
-```C++
+```
 __int64 __fastcall main(signed int a1, char **a2, char **a3)
 {
   _DWORD *v3; // rax@1
@@ -103,7 +103,7 @@ LABEL_15:
 
 위 소스를 잘라서  
 첫번째 분기점 부분을 봅니다.  
-```C++
+```
   LODWORD(v6) = std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::length(&v20); // length check
   if ( v6 != sub_401402((__int64)&v19) )
   {
@@ -113,7 +113,7 @@ LABEL_15:
 ```
 길이 확인을 하는 부분입니다.  
 어셈으로는 아래와 같으며 
-```asm
+```
 .text:0000000000400F67                 call    sub_401402
 .text:0000000000400F6C                 cmp     rbx, rax		; rax == 0xE
 .text:0000000000400F6F                 setnz   al
@@ -127,7 +127,7 @@ LABEL_15:
 따라서 요구되는 `key` 값의 길이는 14이다.  
   
 그리고 해당 키값이 맞는지 한 문자씩 검증합니다.
-```C++
+```
     for ( i = 0; ; ++i )
     {
       LODWORD(v8) = std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::length(&v20);
