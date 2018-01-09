@@ -50,5 +50,5 @@ My PIN is 371173
 Your PIN:314066
 
 You read my mind!!!. We are twin souls
---> 0x00CTF{Y0uR\_th3\_0n3\_4cad2} <--
+--> 0x00CTF{Y0uR_th3_0n3_4cad2} <--
 ```
