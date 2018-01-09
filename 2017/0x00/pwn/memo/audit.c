@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <signal.h>
 
 void handler(){
 	puts("Bye!");
@@ -7,7 +10,7 @@ void handler(){
 }
 
 void __init(){
-	signal(14, handler);    // SIGALRM
+	signal(SIGALRM, handler);
 	alarm(0x40);
 	setvbuf(stdout, 0, 2, 0);
 	setvbuf(stdin, 0, 2, 0);
@@ -15,7 +18,7 @@ void __init(){
 }
 
 int menu(){
-	char buf[4] = {0,};
+	char buf[8] = {0,};
 
 	puts("\n--==[[ Spiritual Memo ]]==--\n");
 	puts("[1] Create a memo");
