@@ -61,8 +61,8 @@
 ...
 ```
 13-21 의 분기문은  
-입력값이 hexadecimal 의 'a'~'f' 인지  
-아니면 hexadecimal 의 '0'~'9' 인지 체크하고  
+입력값이 hexadecimal 의 'a'\~'f' 인지  
+아니면 hexadecimal 의 '0'\~'9' 인지 체크하고  
 4 bit shift 연산해서  
 `v2` 에 저장한다.  
   
