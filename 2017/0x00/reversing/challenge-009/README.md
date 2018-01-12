@@ -317,19 +317,19 @@ bt 해보니 #6 에 .text code 가 눈에 띈다. 심지어 #5 에 fgets 라이�
    0x40205d:    movsxd rcx,edx
    0x402060:    mov    rdx,QWORD PTR [rbp-0x18]			; s
    0x402064:    add    rdx,rcx
-   0x402067:    movzx  edx,BYTE PTR [rdx]				; s[i]
+   0x402067:    movzx  edx,BYTE PTR [rdx]			; s[i]
    0x40206a:    movsx  ecx,dl
    0x40206d:    mov    edx,DWORD PTR [rbp-0xc]			; a3 = i
    0x402070:    mov    rsi,QWORD PTR [rbp-0x18]			; a2 = s
-   0x402074:    mov    edi,ecx							; a1 = s[i]
-   0x402076:    call   rax								; qword_6020c0(s[i], s, i);
+   0x402074:    mov    edi,ecx						; a1 = s[i]
+   0x402076:    call   rax							; qword_6020c0(s[i], s, i);
    0x402078:    add    DWORD PTR [rbp-0x8],eax			; var_8 += eax
    0x40207b:    add    DWORD PTR [rbp-0xc],0x1			; i++
    0x40207f:    mov    eax,DWORD PTR [rbp-0xc]
    0x402082:    cmp    eax,DWORD PTR [rbp-0x4]			; if i < var_4: loop
    0x402085:    jl     0x40204d
    0x402087:    cmp    DWORD PTR [rbp-0x8],0x0
-   0x40208b:    jne    0x4020f5							; avoid
+   0x40208b:    jne    0x4020f5						; avoid
    0x40208d:    mov    DWORD PTR [rbp-0xc],0x0			; success
    0x402094:    jmp    0x4020e8
 ```
