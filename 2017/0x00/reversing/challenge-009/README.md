@@ -1,5 +1,5 @@
 # (challenge-009) OBFSTEANATION
-250
+250 pt
 
 ## Description
 > You need to be really obstinated to solve this one. Grab a cup of tea and do your magic!
