@@ -306,7 +306,7 @@ bt 해보니 #6 에 .text code 가 눈에 띈다. 심지어 #5 에 fgets 라이�
    0x40203b:    mov    eax,DWORD PTR [rip+0x20005f]        # 0x6020a0
    0x402041:    mov    DWORD PTR [rbp-0x4],eax			   ; max(strlen(s), 0x12)
 ```
-`s` 의 길이랑 0x6020a0 에 저장되있는 0x12 중 큰 값이 `[rbp-0x4]` 에 저장된다.  
+`s` 의 길이랑 `0x6020a0` 에 저장되있는 `0x12` 중 큰 값이 `[rbp-0x4]` 에 저장된다.  
 ```
    0x402044:    mov    DWORD PTR [rbp-0xc],0x0			; int i = 0;
    0x40204b:    jmp    0x40207f
