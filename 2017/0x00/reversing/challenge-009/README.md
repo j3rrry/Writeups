@@ -178,8 +178,8 @@ Var1 은 `ptr` 로 네이밍하겠다.
 이 둘을 `g_count` 와 `g[]` 로 네이밍하겠다.  
 ```
 Globals
-0x6021a0    qword g[]
 0x60218c    g_count
+0x6021a0    qword g[]
 
 Locals
 [rbp-0x8]    ptr = 0x3ded36 + 0x212ca = 0x400000
