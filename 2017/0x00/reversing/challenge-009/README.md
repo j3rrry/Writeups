@@ -292,9 +292,9 @@ bt 해보니 #6 에 .text code 가 눈에 띈다. 심지어 #5 에 fgets 라이�
 ```
 지역 변수에 값을 저장하고
 ```
-   0x402013:    mov    rax,QWORD PTR [rbp-0x18]			   ; s
+   0x402013:    mov    rax,QWORD PTR [rbp-0x18]		   ; s
    0x402017:    mov    rdi,rax
-   0x40201a:    call   0x400630 <strlen@plt>			   ; strlen(s)
+   0x40201a:    call   0x400630 <strlen@plt>		   ; strlen(s)
    0x40201f:    mov    edx,DWORD PTR [rip+0x20007b]        # 0x6020a0 == 0x12
    0x402025:    movsxd rdx,edx
    0x402028:    cmp    rax,rdx
@@ -304,7 +304,7 @@ bt 해보니 #6 에 .text code 가 눈에 띈다. 심지어 #5 에 fgets 라이�
    0x402034:    call   0x400630 <strlen@plt>
    0x402039:    jmp    0x402041
    0x40203b:    mov    eax,DWORD PTR [rip+0x20005f]        # 0x6020a0
-   0x402041:    mov    DWORD PTR [rbp-0x4],eax			   ; max(strlen(s), 0x12)
+   0x402041:    mov    DWORD PTR [rbp-0x4],eax		   ; max(strlen(s), 0x12)
 ```
 `s` 의 길이랑 `0x6020a0` 에 저장되있는 `0x12` 중 큰 값이 `[rbp-0x4]` 에 저장된다.  
 ```
@@ -312,7 +312,7 @@ bt 해보니 #6 에 .text code 가 눈에 띈다. 심지어 #5 에 fgets 라이�
    0x40204b:    jmp    0x40207f
    0x40204d:    mov    eax,DWORD PTR [rbp-0xc]
    0x402050:    cdqe
-   0x402052:    mov    rax,QWORD PTR [rax*8+0x6020c0]	; (void*) 0x6020c0[i]
+   0x402052:    mov    rax,QWORD PTR [rax*8+0x6020c0]		; (void*) 0x6020c0[i]
    0x40205a:    mov    edx,DWORD PTR [rbp-0xc]
    0x40205d:    movsxd rcx,edx
    0x402060:    mov    rdx,QWORD PTR [rbp-0x18]			; s
@@ -321,15 +321,15 @@ bt 해보니 #6 에 .text code 가 눈에 띈다. 심지어 #5 에 fgets 라이�
    0x40206a:    movsx  ecx,dl
    0x40206d:    mov    edx,DWORD PTR [rbp-0xc]			; a3 = i
    0x402070:    mov    rsi,QWORD PTR [rbp-0x18]			; a2 = s
-   0x402074:    mov    edi,ecx						; a1 = s[i]
-   0x402076:    call   rax							; qword_6020c0(s[i], s, i);
+   0x402074:    mov    edi,ecx					; a1 = s[i]
+   0x402076:    call   rax					; qword_6020c0(s[i], s, i);
    0x402078:    add    DWORD PTR [rbp-0x8],eax			; var_8 += eax
    0x40207b:    add    DWORD PTR [rbp-0xc],0x1			; i++
    0x40207f:    mov    eax,DWORD PTR [rbp-0xc]
    0x402082:    cmp    eax,DWORD PTR [rbp-0x4]			; if i < var_4: loop
    0x402085:    jl     0x40204d
    0x402087:    cmp    DWORD PTR [rbp-0x8],0x0
-   0x40208b:    jne    0x4020f5						; avoid
+   0x40208b:    jne    0x4020f5					; avoid
    0x40208d:    mov    DWORD PTR [rbp-0xc],0x0			; success
    0x402094:    jmp    0x4020e8
 ```
