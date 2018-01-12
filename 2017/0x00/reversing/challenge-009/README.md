@@ -173,9 +173,9 @@ Constructor 분석
 ...
 ```
 Var5 는 루프문의 counter 이다. `i` 로 네이밍할 수 있겠다.  
-Var1 은 ptr 로 네이밍하겠다.  
+Var1 은 `ptr` 로 네이밍하겠다.  
 또 눈여겨 볼만한 것은 전역변수들이다. 0x60218c 는 32 비트 정수형 변수이고 0x6021a0 은 각 인덱스가 QWORD 인 배열변수이다.  
-이 둘을 g\_count 와 global g[] 로 네이밍하겠다.  
+이 둘을 `g_count` 와 `g[]` 로 네이밍하겠다.  
 ```
 Globals
 0x6021a0    qword g[]
