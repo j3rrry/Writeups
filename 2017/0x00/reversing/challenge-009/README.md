@@ -53,8 +53,8 @@ readelf: Error: Reading 0x194b40 bytes extends past end of file for section head
 섹션 헤더 정보가 맞지 않아서 에러가 발생했다.  
 `Number of section headers` 가 너무 크다!!  
 ELF 파일의 section table 은 파일의 맨 아래에 위치한다.  
-다시말해 섹션 헤더가 시작하는 2105984 부터 파일의 마지막 끝까지 전부 섹션 헤더의 공간이다.  
-그리고 각 섹션 헤더들은 64 바이트 크기를 갖는다.
+다시말해 섹션 헤더가 시작하는 `2105984` 부터 파일의 마지막 끝까지 전부 섹션 헤더의 공간이다.  
+그리고 각 섹션 헤더들은 `64` 바이트 크기를 갖는다.
 ```
 $ ls -l sc04
 -rwxrwxrwx 1 j3rrry j3rrry 2107840 Dec 13 08:23 sc04
