@@ -444,7 +444,7 @@ gdb.execute('r <<< {}'.format(''.join(passwd)))
 # MAIN=31173\x00
 gdb.execute('p *$rax = 0x4e49414d', to_string=True)
 gdb.execute('p *($rax+4) = 0x3131333d', to_string=True)
-gdb.execute('p *($rax+8) = 0x003337', to_string=True)
+gdb.execute('p *($rax+8) = 0x3337', to_string=True)
 
 # to not crash
 fgets = gdb.Breakpoint('*fgets')
