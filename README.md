@@ -2,6 +2,7 @@
 2017/0x00/pwn/[Memo Manager](./2017/0x00/pwn/memo) : `#house of spirit`, `#strdup`  
 2017/0x00/reversing/[challenge-000](./2017/0x00/reversing/challenge-000) : `#C++`  
 2017/0x00/reversing/[challenge-001](./2017/0x00/reversing/challenge-001) : `#anti-debugging`, `#obfuscate`, `#jmp`, `#unicode`  
+2017/0x00/reversing/[challenge-003](./2017/0x00/reversing/challenge-003)  
 2017/0x00/reversing/[challenge-004](./2017/0x00/reversing/challenge-004) : `#anti-debugging`, `#ptrace`, `#obfuscate`, `#got-overwrite`  
 2017/0x00/reversing/[challenge-006](./2017/0x00/reversing/challenge-006)  
 2017/0x00/reversing/[challenge-007](./2017/0x00/reversing/challenge-007)  
