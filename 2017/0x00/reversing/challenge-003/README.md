@@ -63,5 +63,5 @@ int __userpurge sub_401200@<eax>(int ebx0@<ebx>, int *esi0@<esi>, int a1, int a2
 sub\_401090 은 flag 를 숨기려고 일부러 1 만을 반환하도록 만든거 같습니다.  
 
 ## Flag
-![](./flag.png)
+![](./flag.png)  
 `0x00CTF{D0_Y0U_L1K3_H1D3_4ND_S33K}`
