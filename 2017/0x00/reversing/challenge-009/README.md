@@ -21,7 +21,7 @@ Guess the password and save the day
 이를 인증해보니 역시 아니었다 ㅠㅠ  
   
 main 함수부터 분석했는데 문제가 풀리지 않았다...  
-그럴 때는 init 함부부분을 분석해봐야한다. main 불러오기 전에 초기화하는 함수이기 때문!  
+그럴 때는 init 함수부분을 분석해봐야한다. main 불러오기 전에 초기화하는 함수이기 때문!  
   
 아참!  
 현재 상태에서는 gdb, objdump, readelf 등의 툴이 먹히지 않는다.  
