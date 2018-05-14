@@ -63,7 +63,7 @@ v7() 으로 win함수를 호출하면 되겠다.
 ```
 호출하기 전(main:24번째 줄)을 보면  
 쉬프트연산 때문에  
-0x0804852B 이 아닌 0x804852B0(2152223408) 을 넣어야 했다.  
+0x0804852B 에 <<4 를 한 0x804852B0(2152223408) 을 넣어야 했다.  
 그런데  
 ```
 Welcome to the number guessing game!
@@ -73,7 +73,7 @@ Enter your number: 2152223408
 You entered 2147483647. Let's see if it was right...
 Segmentation fault
 ```
-2147483647(0x7fffffff) 를 넘어가지 못했다.  
+v7 이 2147483647(0x7fffffff) 를 넘어가지 못했다.  
   
 ```
      1  int __cdecl main(int argc, const char **argv, const char **envp)
@@ -86,7 +86,7 @@ Segmentation fault
     26  }
 ```
 strtol() 에 대해 검색해보니  
-부호가 앞에 올 수 있다는 것을 보았다.  
+부호가 앞에 올 수 있다는 것을 알았다.  
   
 그래서 -1을 입력해보니  
 v7=0xffffffff  
