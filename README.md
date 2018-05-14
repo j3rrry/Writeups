@@ -1,4 +1,5 @@
 # CTF
+2017/pico/pwn/[Guess The Number](./2017/pico/pwn/Guess%20The%20Number) : `strtol`
 2017/0x00/pwn/[Memo Manager](./2017/0x00/pwn/memo) : `#house of spirit`, `#strdup`  
 2017/0x00/reversing/[challenge-000](./2017/0x00/reversing/challenge-000) : `#C++`  
 2017/0x00/reversing/[challenge-001](./2017/0x00/reversing/challenge-001) : `#anti-debugging`, `#obfuscate`, `#jmp`, `#unicode`  
