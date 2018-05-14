@@ -1,7 +1,7 @@
 `#asm`
-- [Description](#Description)
-- [Analysis](#Analysis)
-- [Exploit code](#Exploit-code)
+- [Description](#description)
+- [Analysis](#analysis)
+- [Exploit code](#exploit-code)
 ## Description
 How much can a couple bytes do?  
 Use [shells](https://webshell2017.picoctf.com/static/8e8374627189dd4e8e27ec41eed166a1/shells)!  
