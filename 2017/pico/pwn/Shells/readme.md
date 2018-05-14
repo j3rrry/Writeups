@@ -73,7 +73,7 @@ win() 을 호출할 어셈을 read(buf,0xA); 에 넣어야 한다.
 ```
 
 ## Exploit code
-```
+```python
 from pwn import *
 
 r = remote('shell2017.picoctf.com', 50454)
