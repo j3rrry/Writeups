@@ -180,7 +180,7 @@ exploit code:
   
   
   
-GOT overwrite 가 가능한 조건은 `Full RELRO` 가 아니면 된다.  
+GOT overwrite 가 가능한 조건은 `Full RELRO` 만 아니면 된다.  
   
 ## Exploit code
 ```
