@@ -1,4 +1,4 @@
-`#FBS`, `#GOT Overwrite`  
+`#FSB`, `#GOT Overwrite`  
 # 목차
 1. [Description](#description)
 2. [Analysis](#analysis)
