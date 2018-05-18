@@ -1,4 +1,5 @@
 # CTF
+2017/pico/pwn/[Ive Got A Secret](./2017/pico/pwn/Ive%20Got%20A%20Secret) : `FSB`  
 2017/pico/pwn/[Config Console](./2017/pico/pwn/Config%20Console) : `FSB`, `GOT`, `overwrite`  
 2017/pico/pwn/[Shells](./2017/pico/pwn/Shells) : `asm`  
 2017/pico/pwn/[Guess The Number](./2017/pico/pwn/Guess%20The%20Number) : `strtol`  
