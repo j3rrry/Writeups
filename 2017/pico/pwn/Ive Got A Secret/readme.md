@@ -1,13 +1,13 @@
 `#FSB`
 # 목차
 1. [Description](#description)
-2. 분석
-	1. 목표 확인
-	2. 취약점 확인 (FSB)
-3. 공격 루틴
-	1. secret 은 몇번째인지
+2. [분석](#분석)
+	1. [목표 확인](#목표-확인)
+	2. [취약점 확인 (FSB)](#취약점-분석-fsb)
+3. [공격 루틴](#공격-루틴)
+	1. [secret 은 몇번째인지](#secret-은-몇번째인지)
 4. [Flag](#flag)
-## Descripttion
+## Description
 > 바이너리 [secret](https://webshell2017.picoctf.com/static/2d756322664bc048224f02ad0a62a0bc/secret) 랑 [소스코드](https://webshell2017.picoctf.com/static/2d756322664bc048224f02ad0a62a0bc/secret.c)가 주어진다.  
 > nc  shell2017.picoctf.com 55189  
   
