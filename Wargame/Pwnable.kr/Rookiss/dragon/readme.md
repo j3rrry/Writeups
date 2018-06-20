@@ -4,8 +4,9 @@
 ## 목차
 1. [Description](#description)
 2. [일단 실행해보기](#일단-실행해보기)
-3. [UAF](#uaf)
-4. [exploit](#exploit)
+3. [Integer Overflow](#integer_overflow)
+4. [UAF](#uaf)
+5. [exploit](#exploit)
 
 ### Description
 
@@ -131,6 +132,8 @@ $
 드래곤의 능력은 위와같이 정해져 있습니다.  
 어미 드래곤이 체력 80, 회복력 4, 공격력 10  
 아기 드래곤이 체력 50, 회복력 5, 공격력 30  
+
+### Integer Overflow
   
 여기서 주목해야할 점은  
 ```
