@@ -10,14 +10,14 @@
 
 ### Description
 
-> I made a RPG game for my little brother.
-> But to trick him, I made it impossible to win.
-> I hope he doesn't get too angry with me :P!
+> I made a RPG game for my little brother.  
+> But to trick him, I made it impossible to win.  
+> I hope he doesn't get too angry with me :P!  
 > 
-> Author : rookiss
-> Download : http://pwnable.kr/bin/dragon
+> Author : rookiss  
+> Download : http://pwnable.kr/bin/dragon  
 > 
-> Running at : nc pwnable.kr 9004
+> Running at : nc pwnable.kr 9004  
 
 문제 설명을 읽어보면  
 동생을 위해 게임을 만들었는데  
