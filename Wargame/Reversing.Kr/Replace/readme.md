@@ -2,11 +2,11 @@
 ## 목차
 1. [일단 실행해보자](#일단-실행해보자)
 2. [문자열 검색부터 시작하는 의식의 흐름](#문자열-검색부터-시작하는-의식의-흐름)
-3. [dword_4084D0 중심으로 분석](#dword_4084D0-중심으로-분석)
-4. [someOffset(=dword_4084D0) 정리하고 공격지점 확인](#someOffset-정리하고-공격지점-확인)
+3. [dword_4084D0 중심으로 분석](#dword_4084d0-중심으로-분석)
+4. [someOffset(=dword_4084D0) 정리하고 공격지점 확인](#someoffset-정리하고-공격지점-확인)
 5. [끝](#끝)
 ### 일단 실행해보자
-![MsgBoxWrong](./MsgBoxWrong.png)
+![MsgBoxWrong](./MsgBoxWorng.png)  
 메시지 박스가 나오고  
 입력은 10진수 숫자만 가능했다.  
   
@@ -177,5 +177,5 @@ GetDlgItemInt() = someOffset-(1+1+0x601605C7+1+1)
 ```
 입력할 값은 2687109798 이 된다.  
   
-![MsgBoxCorrect](./MsgBoxCorrect.png)
+![MsgBoxCorrect](./MsgBoxCorrect.png)  
 "Correct!" 가 뜬다.
