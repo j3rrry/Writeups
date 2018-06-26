@@ -1,5 +1,6 @@
 # Writeups
 ## CTF
+2018/dimigo/pwn/[init](./CTF/2018/dimigo/pwn/init) : `read`, `leak`  
 2017/pico/pwn/[Ive Got A Secret](./CTF/2017/pico/pwn/Ive%20Got%20A%20Secret) : `FSB`  
 2017/pico/pwn/[Config Console](./CTF/2017/pico/pwn/Config%20Console) : `FSB`, `GOT`, `overwrite`  
 2017/pico/pwn/[Shells](./CTF/2017/pico/pwn/Shells) : `asm`  
