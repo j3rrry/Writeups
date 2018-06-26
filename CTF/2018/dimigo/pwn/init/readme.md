@@ -8,8 +8,8 @@
 5. [FLAG](#flag)
 
 ## Description
-> 서버 바이너리에는 정상적으로 플래그가 있습니다
-> nc 121.170.91.17 9901
+> 서버 바이너리에는 정상적으로 플래그가 있습니다  
+> nc 121.170.91.17 9901  
 > [init](https://drive.google.com/uc?authuser=0&id=1IIQkcbDemlX3ceIQhWfu-o5zeqcdh3_D&export=download)
 
 ## 일단 실행
