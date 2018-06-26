@@ -21,6 +21,7 @@ Do you want to do?
 [E]xit
 >>>
 ```
+메뉴를 보니  
 읽고 쓰고가 가능해보임
 
 ## 취약점 파악
@@ -37,7 +38,7 @@ Do you want to do?
     53        v3 = &buf;
     54        write(1, &buf, len);
 ```
-`[R]ead` 와 `[W]rite` 는 길이 len 을 직접 사용자로부터 입력받는다.
+`[R]ead` 와 `[W]rite` 는 길이 len 을 직접 사용자로부터 입력받는다.  
 메모리 leak 이 가능해보임
 
 ## exploit.py
