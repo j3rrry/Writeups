@@ -1,11 +1,12 @@
 # Writeups
 ## CTF
-2018/dimigo/rev/[mm](./CTF/2018/dimigo/rev/mm) : `GDB`, `script`, `PIE`, `brute`,`force`  
-2018/dimigo/pwn/[init](./CTF/2018/dimigo/pwn/init) : `read`, `leak`  
-2017/pico/pwn/[Ive Got A Secret](./CTF/2017/pico/pwn/Ive%20Got%20A%20Secret) : `FSB`  
-2017/pico/pwn/[Config Console](./CTF/2017/pico/pwn/Config%20Console) : `FSB`, `GOT`, `overwrite`  
-2017/pico/pwn/[Shells](./CTF/2017/pico/pwn/Shells) : `asm`  
-2017/pico/pwn/[Guess The Number](./CTF/2017/pico/pwn/Guess%20The%20Number) : `strtol`  
+2018/SCTF/rev/[dingJMax](./CTF/2018/SCTF/rev/dingJMax) : `#gdb`, `#command`, `#script`  
+2018/dimigo/rev/[mm](./CTF/2018/dimigo/rev/mm) : `#gdb`, `#script`, `#PIE`, `#brute`,`#force`  
+2018/dimigo/pwn/[init](./CTF/2018/dimigo/pwn/init) : `#read`, `#leak`  
+2017/pico/pwn/[Ive Got A Secret](./CTF/2017/pico/pwn/Ive%20Got%20A%20Secret) : `#FSB`  
+2017/pico/pwn/[Config Console](./CTF/2017/pico/pwn/Config%20Console) : `#FSB`, `#GOT`, `#overwrite`  
+2017/pico/pwn/[Shells](./CTF/2017/pico/pwn/Shells) : `#asm`  
+2017/pico/pwn/[Guess The Number](./CTF/2017/pico/pwn/Guess%20The%20Number) : `#strtol`  
 2017/0x00/pwn/[Memo Manager](./CTF/2017/0x00/pwn/memo) : `#house of spirit`, `#strdup`  
 2017/0x00/reversing/[challenge-000](./CTF/2017/0x00/reversing/challenge-000) : `#C++`  
 2017/0x00/reversing/[challenge-001](./CTF/2017/0x00/reversing/challenge-001) : `#anti-debugging`, `#obfuscate`, `#jmp`, `#unicode`  
