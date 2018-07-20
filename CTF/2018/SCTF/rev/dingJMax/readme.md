@@ -1,5 +1,5 @@
 `#gdb`, `#command`, `#script`
-# dingJMax (106pts) 100 solversEasyreversing
+# dingJMax (106pts) 94 solversEasyreversing
 > I prepared the Rhythm game "dingJMax" for you.  
 > This is really hard... Can you get prefect score for flag?  
 >   
