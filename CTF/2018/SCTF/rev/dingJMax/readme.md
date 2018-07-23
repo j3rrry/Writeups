@@ -248,16 +248,16 @@ key 를 자동으로 누르도록 gdb 명령을 짜봤습니다.
 b *0x0000000000401623
 command 1
 if *(int *)(0x607600+0x48) != 0x20202020
-    if *(char *)(0x607600+0x48) == 0x6f
+    if *(char *)(0x607600+0x48) == 'o'
         p/c $eax='d'
         end
-    if *(char *)(0x607600+0x48+1) == 0x6f
+    if *(char *)(0x607600+0x48+1) == 'o'
         p/c $eax='f'
         end
-    if *(char *)(0x607600+0x48+2) == 0x6f
+    if *(char *)(0x607600+0x48+2) == 'o'
         p/c $eax='j'
         end
-    if *(char *)(0x607600+0x48+3) == 0x6f
+    if *(char *)(0x607600+0x48+3) == 'o'
         p/c $eax='k'
         end
     p $rip=0x000000000040141A
