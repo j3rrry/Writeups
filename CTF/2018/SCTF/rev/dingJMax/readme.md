@@ -241,7 +241,7 @@ Press any key to conitnue...
 2. 테이블이 업데이트되는 `time_clock`은 20의 배수이며 `PERFECT!` 시간이다.  
   
 그래서 저는 122 번째 줄의 if 문 안으로 들어올 때(`time_clock`이 `PERFECT!` 일 때)  
-key 를 누르도록 gdb 명령을 짜봤습니다.  
+key 를 자동으로 누르도록 gdb 명령을 짜봤습니다.  
 
 ## gdb\_command
 ```
