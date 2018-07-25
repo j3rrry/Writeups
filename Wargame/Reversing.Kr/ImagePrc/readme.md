@@ -1,4 +1,9 @@
 # ImagePrc
+## 목차
+1. [분석](#분석)  
+2. [Flag](#flag)  
+
+## 분석
 ![ImagePrc](./img/ImagePrc.png)  
 프로그램을 실행시키면 그림을 그릴 수 있는 윈도우가 나타납니다.
 ```
@@ -40,5 +45,7 @@ FindResource, LoadResource, LockResource 를 통해 리소스가 사용되었다
 Bitmap 관련 API 가 사용되었고  
 그림판으로 단색, 16bit, 24bit, 256bit 의 비트맵파일을 만들 수 있었는데  
 가로 200, 세로 150에 픽셀 데이터 90000 bytes 는 24bit bitmap 이다.  
+  
+## Flag
 ![flag](./img/flag.bmp)  
 `GOT`
