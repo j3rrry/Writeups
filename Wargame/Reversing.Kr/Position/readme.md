@@ -33,7 +33,7 @@ z3를 통해 답을 도출했습니다.
 유니코드로 `Correct!`가 하드코딩되어있다는 것을 알게되었습니다.  
   
 ![sub_401CD0](./img/sub_401CD0.png)  
-`sub_401740`의 return 값에 따라 결과가 달라집니다.  
+`sub_401740`의 return 값에 따라 `Correct!`일지 `Wrong`일지 결정됩니다.  
   
 ![sub_401740 return](./img/sub_401740_return.png)  
 `Correct!`가 나오려면 `return 1;`을 목표로 다라가야합니다.  
