@@ -1,4 +1,4 @@
-`#z3`, `#solver`
+`#keygen`, `#solver`, `#z3`  
 # Position
 Point: 160   Solved: 732  
 ![solvers](./img/solvers.png)  
