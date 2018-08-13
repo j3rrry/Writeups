@@ -53,7 +53,7 @@ s.add(passwd_2_3 + passwd_3_0 == serial[9])
 s.add(passwd_2_1 + passwd_3_2 == serial[10])
 
 while True:
-	if str(s.check()) == 'sat':
+	if s.check() == sat:
 		a = ''
 		for i in range(4):
 			a += chr(s.model()[passwd[i]].as_long())
