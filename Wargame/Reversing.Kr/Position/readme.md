@@ -27,7 +27,7 @@ z3를 통해 답을 도출했습니다.
 주어진 `ReadMe.txt`를 보면 `serial`과 `passwd`의 마지막 글자는 `p`로 정해져있습니다.  
   
 ![position](./img/position.png)  
-프로그램을 실행시켜보면 `Wrong`이 눈에 띕니다.  
+프로그램을 실행시켜보면 `Wrong`이라는 문자열이 눈에 띕니다.  
   
 ![correct](./img/correct.png)  
 유니코드로 `Correct!`가 하드코딩되어있다는 것을 알게되었습니다.  
