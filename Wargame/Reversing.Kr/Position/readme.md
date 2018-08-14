@@ -9,6 +9,11 @@ Point: 160   Solved: 732
 프로그램을 실행시켰을 때 보이는 `Wrong` 문자열을 cross reference 로 따라가서  
 `Correct!`가 나오기위한 조건을 리버싱을 통해 수집하고  
 z3를 통해 답을 도출했습니다.  
+1. `serial`은 `76876-77776`. `passwd[3]`은 `p`  
+2. `passwd` 길이 4.  
+3. `passwd`는 `a~z`로 이루어져 있음.  
+4. `passwd`는 문자가 중복 사용되지 않음.  
+5. `serial`은 길이 11. `serial[5]`는 `-`  
   
 ## 분석
 `ReadMe.txt`:  
