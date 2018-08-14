@@ -93,7 +93,7 @@ z3를 통해 답을 도출했습니다.
     28	passwd_1_3 = ((passwd[1] >> 2) & 1) + 1
     29	passwd_1_4 = ((passwd[1] >> 3) & 1) + 1
 ```
-본격적인 serial Number 와 Name 의 검증이 시작됩니다.  
+본격적인 `passwd`와 `serial`의 비교 검증이 시작됩니다.  
 `passwd`의 한 bit에 5 또는 1을 더하고 있습니다.  
   
   
