@@ -46,7 +46,7 @@ z3를 통해 답을 도출했습니다.
   
   
 ![sub_401740 return](./img/sub_401740_return.png)  
-`Correct!`가 나오려면 `return 1;`을 목표로 다라가야합니다.  
+`Correct!`가 나오려면 `return 1;`을 목표로 따라가야합니다.  
   
   
 ![passwd_len](./img/passwd_len.png)  
