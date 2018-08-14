@@ -14,6 +14,7 @@ z3를 통해 답을 도출했습니다.
 3. `passwd`는 `a~z`로 이루어져 있음.  
 4. `passwd`는 문자가 중복 사용되지 않음.  
 5. `serial`은 길이 11. `serial[5]`는 `-`  
+6. `serial`과 `passwd`를 비교 검증  
   
 ## 분석
 `ReadMe.txt`:  
