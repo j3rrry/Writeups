@@ -72,7 +72,7 @@ z3를 통해 답을 도출했습니다.
     16		for j in range(i+1,len):
     17			s.add(passwd[i] != passwd[j])
 ```
-`passwd`는 중복된 문자가 존재하지 않습니다.  
+`passwd`는 같은 문자가 중복 사용되지 않아야합니다.  
   
   
 ![serial len](./img/serial_len.png)  
