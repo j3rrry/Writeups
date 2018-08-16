@@ -31,6 +31,13 @@ AAAA0x41414141
 `get_secret()`으로 덮어씌웁니다.  
 
 ```
+    Arch:     i386-32-little
+    RELRO:    Partial RELRO
+    Stack:    Canary found
+    NX:       NX enabled
+    PIE:      No PIE (0x8048000)
+```
+```
   printf(a1);
   printf("\n");
   puts("Tada! Hope you liked our service!");
