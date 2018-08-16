@@ -1,6 +1,6 @@
 # Writeups
 ## CTF
-2018/TJCTF/pwn/[Online Banking](./CTF/2018/TJCTF/pwn/Online Banking) : `#asm`, `#bof`, `#shellcode`  
+2018/TJCTF/pwn/[Online Banking](./CTF/2018/TJCTF/pwn/Online%20Banking) : `#asm`, `#bof`, `#shellcode`  
 2018/SCTF/rev/[dingJMax](./CTF/2018/SCTF/rev/dingJMax) : `#gdb`, `#command`, `#script`  
 2018/dimigo/rev/[mm](./CTF/2018/dimigo/rev/mm) : `#gdb`, `#script`, `#PIE`, `#brute`,`#force`  
 2018/dimigo/pwn/[init](./CTF/2018/dimigo/pwn/init) : `#read`, `#leak`  
