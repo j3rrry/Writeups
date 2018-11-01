@@ -1,5 +1,6 @@
 # Writeups
 ## CTF
+2018/SECCON/Pwn/Classic Pwn/[exploit.py](./CTF/2018/SECCON/Pwn/Classic%20Pwn/exploit.py) : `#64bit`, `#BOF`, `#fastcall`, `#gets`, `#leak`, `#loop`, `#libc`, `#one_gadget`  
 2018/TJCTF/pwn/[Secure Secrets](./CTF/2018/TJCTF/pwn/Secure%20Secrets) : `#FSB`  
 2018/TJCTF/pwn/[Online Banking](./CTF/2018/TJCTF/pwn/Online%20Banking) : `#asm`, `#bof`, `#shellcode`  
 2018/SCTF/rev/[dingJMax](./CTF/2018/SCTF/rev/dingJMax) : `#gdb`, `#command`, `#script`  
