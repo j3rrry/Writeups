@@ -1,5 +1,11 @@
 # Writeups
 ## CTF
+2018/TUCTF/PWN/Lisa/[exploit.py](./CTF/2018/TUCTF/PWN/Lisa/exploit.py) : `#1-byte`, `#BOF`, `#read`  
+2018/TUCTF/PWN/Timber/[exploit.py](./CTF/2018/TUCTF/PWN/Timber/exploit.py) : `#canary`, `#FSB`, `#leak`  
+2018/TUCTF/PWN/shella-hard/[exploit.py](./CTF/2018/TUCTF/PWN/shella-hard/exploit.py) : `#anti`, `#anti-disassembly`, `#BOF`  
+2018/TUCTF/PWN/Canary/[exploit.py](./CTF/2018/TUCTF/PWN/Canary/exploit.py) : `#canary`, `#read`  
+2018/TUCTF/PWN/ehh/[exploit.py](./CTF/2018/TUCTF/PWN/ehh/exploit.py) : `#FSB`, `#PIE`  
+2018/TUCTF/PWN/shella-easy/[exploit.py](./CTF/2018/TUCTF/PWN/shella-easy/exploit.py) : `#BOF`, `#gets`, `#shellcode`, `#shellcraft`  
 2018/SECCON/Pwn/Classic Pwn/[exploit.py](./CTF/2018/SECCON/Pwn/Classic%20Pwn/exploit.py) : `#64bit`, `#BOF`, `#fastcall`, `#gets`, `#leak`, `#loop`, `#libc`, `#one_gadget`  
 2018/TJCTF/pwn/[Secure Secrets](./CTF/2018/TJCTF/pwn/Secure%20Secrets) : `#FSB`  
 2018/TJCTF/pwn/[Online Banking](./CTF/2018/TJCTF/pwn/Online%20Banking) : `#asm`, `#bof`, `#shellcode`  
