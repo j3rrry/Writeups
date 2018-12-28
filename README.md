@@ -1,7 +1,7 @@
 # Writeups
 pwnables(stack-based BOF), reversing
 ## CTF
-2018/sdhsroot/PWN/R00T_SCHool/[exploit.py](./CTF/2018/sdhsroot/PWN/R00T_SCHool/exploit.py) : `#BOF`, `#fastbin_dup`, `#UAF`
+2018/sdhsroot/PWN/R00T_SCHool/[exploit.py](./CTF/2018/sdhsroot/PWN/R00T_SCHool/exploit.py) : `#BOF`, `#fastbin_dup`, `#UAF`  
 2018/TUCTF/PWN/Lisa/[exploit.py](./CTF/2018/TUCTF/PWN/Lisa/exploit.py) : `#1-byte`, `#BOF`, `#read`  
 2018/TUCTF/PWN/Timber/[exploit.py](./CTF/2018/TUCTF/PWN/Timber/exploit.py) : `#canary`, `#FSB`, `#leak`  
 2018/TUCTF/PWN/shella-hard/[exploit.py](./CTF/2018/TUCTF/PWN/shella-hard/exploit.py) : `#anti`, `#anti-disassembly`, `#BOF`  
