@@ -32,7 +32,7 @@ void banner()
   puts("Let's learn System Hacking!!");
 }
 
-void level1(int *check1)
+void level1(int *success)
 {
   //__int64 v5; // [sp+38h] [bp-8h]@1
   char s1[] = "Helloworld"; // [sp+20h] [bp-20h]@1
@@ -52,7 +52,7 @@ void level1(int *check1)
   else
   {
     puts("Success!!");
-    *check1 = 1;
+    *success = 1;
   }
   //v1 = *MK_FP(__FS__, 40LL) ^ v5;
 }
@@ -202,18 +202,18 @@ void level2()
 void main()
 {
   //__int64 v4; // [sp+8h] [bp-8h]@1
-  unsigned int __break; // [sp+4h] [bp-Ch]@1
+  unsigned int success; // [sp+4h] [bp-Ch]@1
 
   //v4 = *MK_FP(__FS__, 40LL);
   setvbuf_init();
-  __break = 0;
+  success = 0;
   while ( 1 )
   {
     banner();
     sleep(1);
-    if ( __break == 0 )
-      level1(&__break);
-    else if ( __break == 1 )
+    if ( success == 0 )
+      level1(&success);
+    else if ( success == 1 )
     {
       level2();
       break;
