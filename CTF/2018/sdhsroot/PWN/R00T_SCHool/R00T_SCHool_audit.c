@@ -212,17 +212,13 @@ void main()
     banner();
     sleep(1);
     if ( __break == 0 )
-    {
       level1(&__break);
-    }
     else if ( __break == 1 )
     {
       level2();
       break;
     }
     else
-    {
       puts("Invalid stage");
-    }
   }
 }
