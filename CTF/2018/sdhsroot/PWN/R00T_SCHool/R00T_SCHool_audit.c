@@ -211,16 +211,18 @@ void main()
   {
     banner();
     sleep(1);
-    if ( __break == 1 )
-      break;
-    if ( __break < 1 )
+    if ( __break == 0 )
     {
       level1(&__break);
     }
-    else if ( __break != 2 )
+    else if ( __break == 1 )
+    {
+      level2();
+      break;
+    }
+    else
     {
       puts("Invalid stage");
     }
   }
-  level2();
 }
