@@ -36,4 +36,5 @@ pwnables(stack-based BOF), reversing
 Reversing.Kr/[Position](./Wargame/Reversing.Kr/Position) : `#keygen`, `#solver`, `#z3`  
 Reversing.Kr/[ImagePrc](./Wargame/Reversing.Kr/ImagePrc) : `#resource`, `#bmp`, `#bitmap`  
 Reversing.Kr/[Replace](./Wargame/Reversing.Kr/Replace) : `#.text-writeable`, `#basic`, `#easy`  
+Pwnable.kr/Toddler_s_Bottle/coin1/[exploit.py](./Wargame/Pwnable.kr/Toddler_s_Bottle/coin1/exploit.py) : `#binary search`  
 Pwnable.kr/Rookiss/[dragon](./Writeups/Wargame/Pwnable.kr/Rookiss/dragon) : `#integer`, `#overflow`, `#UAF`
