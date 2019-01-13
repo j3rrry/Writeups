@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-
+1
 <div id="home">
   <h1>Blog Posts</h1>
   <ul class="posts">
